@@ -1,39 +1,26 @@
-# app/calculator.py
-
-# ----------------------
-# Step 1: Define functions
-# ----------------------
-
-def add(a, b):
-    return a + b
-
-def subtract(a, b):
-    return a - b
-
-def multiply(a, b):
-    return a * b
-
-def divide(a, b):
-    # Python naturally raises ZeroDivisionError if b == 0
-    return a / b
-
-
-# ----------------------
-# Step 2: Calculator class
-# ----------------------
+"""
+Calculator module with basic arithmetic operations.
+"""
 
 class Calculator:
-    def __init__(self):
-        pass
+    """Simple calculator class."""
 
-    def add(self, a, b):
-        return add(a, b)
+    @staticmethod
+    def add(a, b):
+        """Return the sum of a and b."""
+        return a + b
 
-    def subtract(self, a, b):
-        return subtract(a, b)
+    @staticmethod
+    def subtract(a, b):
+        """Return the difference of a and b."""
+        return a - b
 
-    def multiply(self, a, b):
-        return multiply(a, b)
+    @staticmethod
+    def multiply(a, b):
+        """Return the product of a and b."""
+        return a * b
 
-    def divide(self, a, b):
-        return divide(a, b)
+    @staticmethod
+    def divide(a, b):
+        """Return the division of a by b. Raises ZeroDivisionError if b is 0."""
+        return a / b  # Let Python naturally raise ZeroDivisionError
