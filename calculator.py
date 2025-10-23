@@ -1,6 +1,9 @@
 # app/calculator.py
 
+# ----------------------
 # Step 1: Define functions
+# ----------------------
+
 def add(a, b):
     return a + b
 
@@ -11,12 +14,14 @@ def multiply(a, b):
     return a * b
 
 def divide(a, b):
-    if b == 0:
-        raise ValueError("Cannot divide by zero")
+    # Python naturally raises ZeroDivisionError if b == 0
     return a / b
 
 
-# Step 2: Create a Calculator class that uses these functions
+# ----------------------
+# Step 2: Calculator class
+# ----------------------
+
 class Calculator:
     def __init__(self):
         pass

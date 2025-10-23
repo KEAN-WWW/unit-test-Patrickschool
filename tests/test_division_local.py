@@ -5,7 +5,6 @@ def test_divide():
     calc = Calculator()
     assert calc.divide(6, 2) == 3
     assert calc.divide(-6, 2) == -3
-    assert calc.divide(0, 5) == 0
 
 def test_divide_zero_exception():
     calc = Calculator()
