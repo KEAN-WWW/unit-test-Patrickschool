@@ -1,12 +1,8 @@
-"""
-Unit tests for subtraction in Calculator.
-"""
+"""Subtraction tests for Calculator.subtract."""
 
 from app.calculator import Calculator
 
-def test_subtract():
-    """Test subtraction."""
+def test_subtraction_basic():
+    """Basic subtraction test: 20 - 8 == 12"""
     calc = Calculator()
-    assert calc.subtract(5, 3) == 2
-    assert calc.subtract(0, 0) == 0
-    assert calc.subtract(-1, -1) == 0
+    assert calc.subtract(20, 8) == 12

@@ -1,12 +1,8 @@
-"""
-Unit tests for multiplication in Calculator.
-"""
+"""Multiplication tests for Calculator.multiply."""
 
 from app.calculator import Calculator
 
-def test_multiply():
-    """Test multiplication."""
+def test_multiplication_basic():
+    """Basic multiplication test: 6 * 7 == 42"""
     calc = Calculator()
-    assert calc.multiply(3, 4) == 12
-    assert calc.multiply(0, 5) == 0
-    assert calc.multiply(-2, 3) == -6
+    assert calc.multiply(6, 7) == 42

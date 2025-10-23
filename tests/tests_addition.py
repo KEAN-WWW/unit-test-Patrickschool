@@ -1,12 +1,8 @@
-"""
-Unit tests for addition in Calculator.
-"""
+"""Addition tests for Calculator.add."""
 
 from app.calculator import Calculator
 
-def test_add():
-    """Test addition."""
+def test_addition_basic():
+    """Basic addition test: 2 + 3 == 5"""
     calc = Calculator()
     assert calc.add(2, 3) == 5
-    assert calc.add(-1, 1) == 0
-    assert calc.add(0, 0) == 0

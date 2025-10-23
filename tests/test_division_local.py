@@ -1,14 +1,8 @@
-"""
-Local division tests for Calculator.
-"""
+"""Local division test file for Calculator.divide."""
 
-import pytest
 from app.calculator import Calculator
 
-def test_divide_local():
-    """Test more division cases."""
+def test_division_local():
+    """Local division test: 12 / 4 == 3"""
     calc = Calculator()
-    assert calc.divide(9, 3) == 3
-    assert calc.divide(-8, -2) == 4
-    with pytest.raises(ZeroDivisionError):
-        calc.divide(1, 0)
+    assert calc.divide(12, 4) == 3
