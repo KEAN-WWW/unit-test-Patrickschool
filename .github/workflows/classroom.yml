@@ -1,14 +1,46 @@
-name: Autograder
+name: Autograder CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install pip-tools (upgrade pip)
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Install requirements
+        # ensure requirements.txt exists at repo root
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "requirements.txt not found, installing pytest and pylint by default"
+            pip install pytest pylint
+          fi
+
+      - name: Run tests with pylint
+        # run pytest with the pylint plugin (or just pytest --pylint)
+        run: |
+          pytest --pylint -q
+        # if you want to continue even if tests fail, you can add `continue-on-error: true` at step level,
+        # but for autograders you usually want the job to fail on test failures.
+
+      - name: Show Python and pip info
+        run: |
+          python --version
+          pip --version
+          python -m pip list --format=columns
