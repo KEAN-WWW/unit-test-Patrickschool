@@ -10,36 +10,39 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Set up Python
       - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install pip-tools (upgrade pip)
-        run: |
-          python -m pip install --upgrade pip
+      # Step 3: Upgrade pip
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
 
-      - name: Install requirements
-        # ensure requirements.txt exists at repo root
+      # Step 4: Install dependencies
+      - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           else
-            echo "requirements.txt not found, installing pytest and pylint by default"
             pip install pytest pylint
           fi
 
-      - name: Run tests with pylint
-        # run pytest with the pylint plugin (or just pytest --pylint)
-        run: |
-          pytest --pylint -q
-        # if you want to continue even if tests fail, you can add `continue-on-error: true` at step level,
-        # but for autograders you usually want the job to fail on test failures.
+      # Step 5: Run tests with pytest
+      - name: Run tests
+        run: pytest -q
 
-      - name: Show Python and pip info
+      # Step 6: Run pylint separately
+      - name: Run pylint
+        run: pylint app tests
+
+      # Step 7: Show Python & pip info (optional)
+      - name: Python and pip info
         run: |
           python --version
           pip --version
